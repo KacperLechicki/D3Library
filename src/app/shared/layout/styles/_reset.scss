@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: fixed;
+  width: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1.6rem;
+}

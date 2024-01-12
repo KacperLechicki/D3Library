@@ -1,0 +1,18 @@
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--gap-xs) var(--gap-sm);
+  height: var(--button-sm-h);
+  font-size: 1.6rem;
+  border-radius: var(--border-rounded);
+  transition: background 0.1s;
+
+  &:hover {
+    background: rgba($color: var(--gray-200-rgb), $alpha: 0.2);
+  }
+
+  &:active {
+    background: rgba($color: var(--gray-200-rgb), $alpha: 0.35);
+  }
+}

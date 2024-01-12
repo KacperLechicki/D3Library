@@ -1,0 +1,15 @@
+.sidenav {
+  width: 0;
+  height: 100vh;
+  color: var(--light);
+  background: var(--dark);
+  border-right: 5px solid rgba($color: var(--secondary-color-rgb), $alpha: 0);
+  opacity: 0;
+  transition: width 0.3s, border-right 0.7s, opacity 0.5s;
+
+  &.open {
+    width: 28rem;
+    border-right: 5px solid rgba($color: var(--secondary-color-rgb), $alpha: 1);
+    opacity: 1;
+  }
+}

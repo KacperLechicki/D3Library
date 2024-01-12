@@ -1,0 +1,55 @@
+:root {
+  --light-rgb: 238, 239, 240;
+  --light: #eeeff0;
+  --dark-rgb: 33, 37, 41;
+  --dark: #212529;
+
+  --primary-color-rgb: 69, 137, 247;
+  --primary-color: #4589f7;
+  --secondary-color-rgb: 78, 188, 213;
+  --secondary-color: #4ebcd5;
+  --tertiary-color-rgb: 63, 81, 182;
+  --tertiary-color: #3f51b6;
+  --background-color-rgb: 248, 249, 250;
+  --background-color: #eeeff0;
+  --text-color-rgb: 33, 37, 41;
+  --text-color: #212529;
+  --white-100-rgb: 248, 249, 250;
+  --white-100: #eeeff0;
+  --white-200-rgb: 233, 236, 239;
+  --white-200: #e9ecef;
+  --white-300-rgb: 222, 226, 230;
+  --white-300: #dee2e6;
+  --white-400-rgb: 206, 212, 218;
+  --white-400: #ced4da;
+  --gray-100-rgb: 173, 181, 189;
+  --gray-100: #adb5bd;
+  --gray-200-rgb: 108, 117, 125;
+  --gray-200: #6c757d;
+  --gray-300-rgb: 73, 80, 87;
+  --gray-300: #495057;
+  --gray-400-rgb: 52, 58, 64;
+  --gray-400: #343a40;
+  --gray-500-rgb: 33, 37, 41;
+}
+
+[data-theme="light"] {
+  --background-color: #eeeff0;
+  --text-color: #212529;
+}
+
+[data-theme="dark"] {
+  --background-color: #212529;
+  --text-color: #eeeff0;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+// document.getElementById('toggleTheme').addEventListener('click', function() {
+//   let currentTheme = document.documentElement.getAttribute('data-theme');
+//   let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+//   toggleTheme(newTheme);
+// });
