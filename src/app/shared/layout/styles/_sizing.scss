@@ -1,14 +1,15 @@
 :root {
-  --gap-xs: 5px;
-  --gap-sm: 10px;
-  --gap-md: 15px;
-  --gap-lg: 20px;
-  --gap-xl: 30px;
+  --gap-xs: 0.5rem;
+  --gap-sm: 1rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2rem;
+  --gap-xl: 3rem;
 
   --border-circle: 50%;
   --border-pill: 50px;
   --border-rounded: 5px;
 
-  --button-xs-h: 25px;
-  --button-sm-h: 30px;
+  --button-xs-h: 2.5rem;
+  --button-sm-h: 3rem;
+  --button-md-h: 4rem;
 }

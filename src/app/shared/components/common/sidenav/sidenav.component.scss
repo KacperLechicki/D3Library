@@ -2,14 +2,18 @@
   width: 0;
   height: 100vh;
   color: var(--light);
-  background: var(--dark);
-  border-right: 5px solid rgba($color: var(--secondary-color-rgb), $alpha: 0);
+  background: var(--background-color);
+  border-left: 0.5rem solid rgba($color: var(--tertiary-color-rgb), $alpha: 0);
+  border-right: 0.5rem solid rgba($color: var(--secondary-color-rgb), $alpha: 0);
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: width 0.3s, border-right 0.7s, opacity 0.5s;
 
   &.open {
     width: 28rem;
-    border-right: 5px solid rgba($color: var(--secondary-color-rgb), $alpha: 1);
+    border-left: 0.5rem solid rgba($color: var(--tertiary-color-rgb), $alpha: 1);
+    border-right: 0.5rem solid
+      rgba($color: var(--secondary-color-rgb), $alpha: 1);
     opacity: 1;
   }
 }

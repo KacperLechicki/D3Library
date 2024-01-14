@@ -3,3 +3,5 @@
 @use "./theme" as *;
 @use "./sizing" as *;
 @use "./fonts" as *;
+
+@use "./components/popover" as *;

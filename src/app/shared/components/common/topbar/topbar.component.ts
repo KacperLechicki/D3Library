@@ -1,51 +1,24 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  Renderer2,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonComponent } from '../../controls/button/button.component';
-import { AsyncPipe, DOCUMENT } from '@angular/common';
-import { Store } from '@ngrx/store';
-import { toggleSidenav } from '../sidenav/store/sidenav.actions';
-import { selectSidenavOpen } from '../sidenav/store/sidenav.selectors';
-import { AppState } from '../../../store/app.state';
+import { AsyncPipe } from '@angular/common';
+import { ThemePopoverComponent } from '../theme-popover/theme-popover.component';
+import { PopoverModule } from '@coreui/angular';
+import { SidenavStateService } from '../../../store/sidenav/sidenav-state.service';
 
 @Component({
   selector: 'sh-topbar',
   standalone: true,
-  imports: [ButtonComponent, AsyncPipe],
+  imports: [ButtonComponent, AsyncPipe, ThemePopoverComponent, PopoverModule],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent {
   protected readonly logoPath = 'assets/logo/logo.png';
-  protected readonly sidenavOpen$ = this.store.select(selectSidenavOpen);
-  private mode = 'dark';
+  protected sidenavOpen = this.sidenavStateService.select('opened');
 
-  constructor(
-    private store: Store<AppState>,
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
+  constructor(private sidenavStateService: SidenavStateService) {}
 
-  protected handleTool(event: string): void {
-    if (event === 'theme') {
-      this.mode === 'dark' ? (this.mode = 'light') : (this.mode = 'dark');
-      this.mode === 'light'
-        ? this.renderer.setAttribute(
-            this.document.documentElement,
-            'data-theme',
-            'dark'
-          )
-        : this.renderer.setAttribute(
-            this.document.documentElement,
-            'data-theme',
-            'light'
-          );
-    } else if (event === 'toggle') {
-      this.store.dispatch(toggleSidenav());
-    }
+  protected toggleSidenav(): void {
+    this.sidenavStateService.set('opened', !this.sidenavOpen());
   }
 }

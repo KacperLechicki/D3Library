@@ -3,7 +3,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: var(--gap-xs) var(--gap-sm);
-  height: var(--button-sm-h);
+  height: var(--button-md-h);
   font-size: 1.6rem;
   border-radius: var(--border-rounded);
   transition: background 0.1s;
@@ -14,5 +14,10 @@ button {
 
   &:active {
     background: rgba($color: var(--gray-200-rgb), $alpha: 0.35);
+  }
+
+  &.icon {
+    width: var(--button-md-h);
+    height: var(--button-md-h);
   }
 }

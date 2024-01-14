@@ -1,21 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, OnInit } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
-import { Observable } from 'rxjs';
-import { selectSidenavOpen } from './store/sidenav.selectors';
-import { AppState } from '../../../store/app.state';
+import { SidenavStateService } from '../../../store/sidenav/sidenav-state.service';
 
 @Component({
   selector: 'sh-sidenav',
   standalone: true,
-  imports: [NgClass, AsyncPipe],
+  imports: [AsyncPipe, NgClass],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent {
-  protected sidenavOpen$: Observable<boolean> =
-    this.store.select(selectSidenavOpen);
+  protected sidenavOpen = this.sidenavStateService.select('opened');
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private sidenavStateService: SidenavStateService) {}
 }

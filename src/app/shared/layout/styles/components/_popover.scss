@@ -1,0 +1,13 @@
+.popover-body {
+  padding: var(--gap-sm) var(--gap-md);
+  font-size: 1.2rem;
+  font-family: var(--font-secondary);
+  color: var(--text-color);
+  background: var(--background-color);
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: var(--border-rounded);
+}
+
+.bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::after {
+  border-bottom-color: var(--secondary-color);
+}
