@@ -55,13 +55,15 @@ aside {
       section {
         margin-bottom: var(--gap-xl);
         padding: var(--gap-lg);
-        width: 80%;
-        border-top: 0.3rem solid var(--text-color);
+        width: 100%;
+        border-top: 0.2rem solid var(--text-color);
       }
 
-      h3 {
+      &--title {
+        margin-bottom: var(--gap-lg);
         font-family: var(--font-primary);
         font-weight: bold;
+        font-size: 1.8rem;
         letter-spacing: 0.1rem;
         color: var(--text-color);
       }

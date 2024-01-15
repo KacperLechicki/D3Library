@@ -1,0 +1,28 @@
+@import "../../../../../../shared/layout/styles/mixins/button";
+
+.sidenav-item {
+  @include button;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--gap-md);
+  padding: var(--gap-xs) var(--gap-md);
+
+  &.active {
+    border: 0.1rem solid rgba($color: var(--gray-200-rgb), $alpha: 0.7);
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__label {
+    margin-bottom: 0;
+    font-family: var(--font-secondary);
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+  }
+}
