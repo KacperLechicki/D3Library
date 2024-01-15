@@ -11,6 +11,7 @@ import { SidenavStateService } from '../../../store/sidenav/sidenav-state.servic
 })
 export class SidenavComponent {
   protected sidenavOpen = this.sidenavStateService.select('opened');
+  protected readonly logoPath = 'assets/logo/logo.png';
 
   constructor(private sidenavStateService: SidenavStateService) {}
 }

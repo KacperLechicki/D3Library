@@ -1,19 +1,70 @@
-.sidenav {
-  width: 0;
-  height: 100vh;
-  color: var(--light);
-  background: var(--background-color);
-  border-left: 0.5rem solid rgba($color: var(--tertiary-color-rgb), $alpha: 0);
-  border-right: 0.5rem solid rgba($color: var(--secondary-color-rgb), $alpha: 0);
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transition: width 0.3s, border-right 0.7s, opacity 0.5s;
+aside {
+  position: absolute;
+  top: calc(0rem + 7rem);
+  left: 0;
 
-  &.open {
-    width: 28rem;
-    border-left: 0.5rem solid rgba($color: var(--tertiary-color-rgb), $alpha: 1);
+  .sidenav {
+    padding: calc(var(--gap-md) * 2) var(--gap-xs);
+    width: 0;
+    height: 100vh;
+    color: var(--light);
+    background: var(--background-color);
+    border-left: 0.5rem solid rgba($color: var(--tertiary-color-rgb), $alpha: 0);
     border-right: 0.5rem solid
-      rgba($color: var(--secondary-color-rgb), $alpha: 1);
-    opacity: 1;
+      rgba($color: var(--secondary-color-rgb), $alpha: 0);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: width 0.7s, border-right 0.7s, opacity 0.3s;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @media only screen and (min-height: 700px) {
+      padding: calc(var(--gap-xl) * 2) var(--gap-md);
+    }
+
+    &.open {
+      width: 28rem;
+      border-left: 0.5rem solid
+        rgba($color: var(--tertiary-color-rgb), $alpha: 1);
+      border-right: 0.5rem solid
+        rgba($color: var(--secondary-color-rgb), $alpha: 1);
+      opacity: 1;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 7rem;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: calc(var(--gap-md) * 2);
+
+      @media only screen and (min-height: 700px) {
+        margin-top: calc(var(--gap-xl) * 2);
+      }
+
+      section {
+        margin-bottom: var(--gap-xl);
+        padding: var(--gap-lg);
+        width: 80%;
+        border-top: 0.3rem solid var(--text-color);
+      }
+
+      h3 {
+        font-family: var(--font-primary);
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+        color: var(--text-color);
+      }
+    }
   }
 }

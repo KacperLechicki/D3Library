@@ -1,0 +1,10 @@
+.content {
+  width: 100%;
+  height: 100vh;
+
+  &-outlet {
+    margin-top: var(--gap-xl);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
