@@ -47,9 +47,3 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
-// document.getElementById('toggleTheme').addEventListener('click', function() {
-//   let currentTheme = document.documentElement.getAttribute('data-theme');
-//   let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-//   toggleTheme(newTheme);
-// });

@@ -1,14 +1,10 @@
-import { Inject, Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignalsStoreService<T> {
   public state = signal({} as T);
-
-  constructor(@Inject('initialState') private initialState: T) {
-    this.state.set(this.initialState);
-  }
 
   /**
    * This is used to set a new value for a property.

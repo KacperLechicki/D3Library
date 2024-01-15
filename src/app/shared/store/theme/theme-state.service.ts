@@ -6,7 +6,10 @@ import { Subject } from 'rxjs';
 import { ThemeStateEffects } from './theme-state.effects';
 
 export interface ThemeState {
-  mode: Theme;
+  theme: Theme;
+  primary: string;
+  secondary: string;
+  tertiary: string;
 }
 
 @Injectable({
@@ -20,13 +23,11 @@ export class ThemeStateService extends SignalsStoreService<ThemeState> {
   }
 
   constructor(private themeStateEffects: ThemeStateEffects) {
-    super({
-      mode: Theme.LIGHT,
-    });
+    super();
 
     //Side Effects
     this.themeStateEffects.watchModeChanges(
-      toObservable(this.select('mode')),
+      toObservable(this.state),
       this.destroyed$
     );
   }

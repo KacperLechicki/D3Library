@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { SidenavStateService } from '../../../store/sidenav/sidenav-state.service';
 

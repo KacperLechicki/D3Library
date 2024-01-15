@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../controls/button/button.component';
 import { AsyncPipe } from '@angular/common';
-import { ThemePopoverComponent } from '../theme-popover/theme-popover.component';
 import { PopoverModule } from '@coreui/angular';
 import { SidenavStateService } from '../../../store/sidenav/sidenav-state.service';
+import { ThemePopoverComponent } from './components/theme-popover/theme-popover.component';
 
 @Component({
   selector: 'sh-topbar',
