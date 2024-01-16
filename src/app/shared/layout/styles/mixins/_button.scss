@@ -1,14 +1,19 @@
 @mixin button {
   background: transparent;
   border-radius: var(--border-rounded);
-  transition: background 0.1s;
   cursor: pointer;
 
-  &:hover {
-    background: rgba($color: var(--gray-200-rgb), $alpha: 0.2);
-  }
+  @media only screen and (min-width: 768px) {
+    &:not(.active) {
+      transition: background 0.1s;
 
-  &:active {
-    background: rgba($color: var(--gray-200-rgb), $alpha: 0.35);
+      &:hover {
+        background: rgba($color: var(--gray-200-rgb), $alpha: 0.2);
+      }
+
+      &:active {
+        background: rgba($color: var(--gray-200-rgb), $alpha: 0.35);
+      }
+    }
   }
 }
