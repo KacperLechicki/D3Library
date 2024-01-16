@@ -24,26 +24,24 @@ export class BootstrapStateService {
 
   private _themeState(): void {
     if (typeof window !== 'undefined') {
-      const primaryColor = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--primary-color');
-      const secondaryColor = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--secondary-color');
-      const tertiaryColor = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--tertiary-color');
-
       const themeFromStorage =
         this.sessionStorageService.fromSessionStorage<ThemeState>(
           'theme'
         ) as ThemeState;
 
       this.themeStateService.setState({
-        theme: (themeFromStorage.theme as Theme) || Theme.LIGHT,
-        primary: (themeFromStorage.primary as string) || primaryColor,
-        secondary: (themeFromStorage.secondary as string) || secondaryColor,
-        tertiary: (themeFromStorage.tertiary as string) || tertiaryColor,
+        theme: themeFromStorage
+          ? (themeFromStorage.theme as Theme)
+          : Theme.LIGHT,
+        primary: themeFromStorage
+          ? (themeFromStorage.primary as string)
+          : '#4589f7',
+        secondary: themeFromStorage
+          ? (themeFromStorage.secondary as string)
+          : '#4ebcd5',
+        tertiary: themeFromStorage
+          ? (themeFromStorage.tertiary as string)
+          : '#3f51b6',
       });
     }
   }

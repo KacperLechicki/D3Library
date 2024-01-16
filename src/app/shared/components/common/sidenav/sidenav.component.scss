@@ -6,6 +6,7 @@ aside {
   .sidenav {
     padding: calc(var(--gap-md) * 2) var(--gap-xs);
     width: 0;
+    max-width: 85vw;
     height: 100vh;
     color: var(--light);
     background: var(--background-color);
