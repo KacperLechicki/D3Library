@@ -1,18 +1,27 @@
 .homepage-default {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
   width: 100%;
-  height: 100vh;
-  margin-top: calc(var(--gap-xl) * 2);
+  height: calc((100vh - 8rem));
 
   &__header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: calc(var(--gap-lg) * 2) calc(var(--gap-xl) * 2);
     text-align: center;
+    transform: translateY(-2rem);
+    border-bottom-right-radius: var(--border-rounded);
+    border-right: dashed 0.3rem
+      rgba($color: var(--tertiary-color-rgb), $alpha: 0.7);
+    border-bottom: dashed 0.3rem
+      rgba($color: var(--tertiary-color-rgb), $alpha: 0.5);
 
     h3 {
-      margin-bottom: var(--gap-md);
+      margin-bottom: var(--gap-sm);
       font-size: 5.4rem;
       letter-spacing: 0.1rem;
       font-family: var(--font-primary);
@@ -23,8 +32,21 @@
     }
 
     p {
-      max-width: 50rem;
+      max-width: 32rem;
       font-size: 1.8rem;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--gap-md);
+      margin-top: var(--gap-xl);
+    }
+
+    &__carousel {
+      margin-top: var(--gap-xl);
+      width: clamp(30rem, 90%, 70rem);
     }
   }
 }

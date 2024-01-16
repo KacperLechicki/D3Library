@@ -4,7 +4,8 @@
   cursor: pointer;
 
   @media only screen and (min-width: 768px) {
-    &:not(.active) {
+    &.icon:not(.active),
+    &.blank:not(.active) {
       transition: background 0.1s;
 
       &:hover {
@@ -15,5 +16,41 @@
         background: rgba($color: var(--gray-200-rgb), $alpha: 0.35);
       }
     }
+  }
+
+  &.icon {
+    width: var(--button-md-h);
+    height: var(--button-md-h);
+  }
+
+  &.primary,
+  &.secondary,
+  &.tertiary {
+    transition: background 0.1s;
+
+    @media only screen and (min-width: 768px) {
+      &:hover {
+        filter: brightness(0.9);
+      }
+
+      &:active {
+        filter: brightness(0.8);
+      }
+    }
+  }
+
+  &.primary {
+    color: var(--light);
+    background: var(--primary-color);
+  }
+
+  &.secondary {
+    color: var(--light);
+    background: var(--secondary-color);
+  }
+
+  &.tertiary {
+    color: var(--light);
+    background: var(--tertiary-color);
   }
 }

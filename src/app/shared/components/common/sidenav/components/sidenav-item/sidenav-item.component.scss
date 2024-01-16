@@ -10,12 +10,13 @@
   min-width: 15rem;
   letter-spacing: 0.1rem;
   font-family: var(--font-secondary);
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 300;
   color: var(--text-color);
   overflow: hidden;
 
   &.active {
+    font-weight: 500;
     border: 0.1rem solid rgba($color: var(--gray-200-rgb), $alpha: 0.7);
   }
 
@@ -26,6 +27,9 @@
   }
 
   &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 0;
   }
 }

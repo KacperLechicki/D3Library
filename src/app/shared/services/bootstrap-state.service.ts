@@ -3,7 +3,7 @@ import {
   ThemeState,
   ThemeStateService,
 } from '../store/theme/theme-state.service';
-import { Theme } from '../interfaces/theme.interface';
+import { AppColors, Theme } from '../interfaces/theme.interface';
 import { SidenavStateService } from '../store/sidenav/sidenav-state.service';
 import { SessionStorageService } from './session-storage.service';
 
@@ -35,13 +35,13 @@ export class BootstrapStateService {
           : Theme.LIGHT,
         primary: themeFromStorage
           ? (themeFromStorage.primary as string)
-          : '#4589f7',
+          : AppColors.PRIMARY,
         secondary: themeFromStorage
           ? (themeFromStorage.secondary as string)
-          : '#4ebcd5',
+          : AppColors.SECONDARY,
         tertiary: themeFromStorage
           ? (themeFromStorage.tertiary as string)
-          : '#3f51b6',
+          : AppColors.TERTIARY,
       });
     }
   }

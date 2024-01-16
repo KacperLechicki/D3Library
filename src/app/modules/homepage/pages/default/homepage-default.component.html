@@ -1,6 +1,15 @@
 <div class="homepage-default">
   <header class="homepage-default__header">
     <h3><span>D3</span>Library</h3>
-    <p>Showcase of different types of d3 charts with mock data.</p>
+    <p>Showcase of different types of D3 charts with mock data.</p>
+
+    <div class="homepage-default__header__buttons">
+      <sh-button [type]="'primary'">
+        <span>Get started</span>
+      </sh-button>
+      <sh-button [type]="'secondary'" (click)="openD3Link('https://d3js.org/')">
+        <span>Check D3 Documentation</span>
+      </sh-button>
+    </div>
   </header>
 </div>

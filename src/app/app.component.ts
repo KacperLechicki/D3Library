@@ -3,7 +3,15 @@ import { TopbarComponent } from './shared/components/common/topbar/topbar.compon
 import { SidenavComponent } from './shared/components/common/sidenav/sidenav.component';
 import { BootstrapStateService } from './shared/services/bootstrap-state.service';
 import { RouterOutlet } from '@angular/router';
-import { Observable, debounceTime, fromEvent, map, startWith } from 'rxjs';
+import {
+  Observable,
+  debounceTime,
+  distinctUntilChanged,
+  fromEvent,
+  map,
+  of,
+  startWith,
+} from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -26,11 +34,16 @@ export class AppComponent implements AfterViewInit {
   }
 
   protected isDesktop(): Observable<boolean> {
-    return fromEvent(window, 'resize').pipe(
-      debounceTime(500),
-      startWith(this.getScreenSize()),
-      map(() => this.getScreenSize())
-    );
+    if (typeof window !== 'undefined') {
+      return fromEvent(window, 'resize').pipe(
+        debounceTime(500),
+        map(() => this.getScreenSize()),
+        distinctUntilChanged(),
+        startWith(this.getScreenSize())
+      );
+    }
+
+    return of(false);
   }
 
   private getScreenSize(): boolean {
