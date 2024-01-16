@@ -8,9 +8,4 @@ button {
   padding: var(--gap-xs) var(--gap-sm);
   height: var(--button-md-h);
   font-size: 1.6rem;
-
-  &.icon {
-    width: var(--button-md-h);
-    height: var(--button-md-h);
-  }
 }

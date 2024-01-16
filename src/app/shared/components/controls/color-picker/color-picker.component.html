@@ -1,3 +1,8 @@
 <form class="color-picker" [formGroup]="formGroup">
-  <input class="color-picker__control" type="color" [formControlName]="controlName">
+  <input class="color-picker__control" type="color" [formControlName]="controlName" [attr.list]="datalistID">
+  <datalist [id]="datalistID">
+    @for (option of datalistOptions; track option) {
+    <option [value]="option">Grey</option>
+    }
+  </datalist>
 </form>

@@ -1,0 +1,23 @@
+.carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--border-rounded);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-caption {
+    border-radius: var(--border-rounded);
+    background: rgba($color: var(--dark-rgb), $alpha: 0.95);
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    background: var(--dark) !important;
+    opacity: 1 !important;
+  }
+}

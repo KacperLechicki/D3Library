@@ -13,17 +13,20 @@
   <form [formGroup]="themeForm">
     <div class="theme-popover__control">
       <h3>Primary Color: </h3>
-      <sh-color-picker [formGroup]="themeForm" [controlName]="'primary'" />
+      <sh-color-picker [formGroup]="themeForm" [controlName]="'primary'"
+        [datalistOptions]="['#3E78B2', '#258555', '#A657AE']" [datalistID]="'primary'" />
     </div>
 
     <div class="theme-popover__control">
       <h3>Secondary Color: </h3>
-      <sh-color-picker [formGroup]="themeForm" [controlName]="'secondary'" />
+      <sh-color-picker [formGroup]="themeForm" [controlName]="'secondary'"
+        [datalistOptions]="['#3E78B2', '#258555', '#A657AE']" [datalistID]="'secondary'" />
     </div>
 
     <div class="theme-popover__control">
       <h3>Tertiary Color: </h3>
-      <sh-color-picker [formGroup]="themeForm" [controlName]="'tertiary'" />
+      <sh-color-picker [formGroup]="themeForm" [controlName]="'tertiary'"
+        [datalistOptions]="['#3E78B2', '#258555', '#A657AE']" [datalistID]="'tertiary'" />
     </div>
   </form>
 </div>

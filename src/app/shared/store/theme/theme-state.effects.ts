@@ -6,7 +6,7 @@ import {
   distinctUntilChanged,
   takeUntil,
 } from 'rxjs';
-import { Theme } from '../../interfaces/theme.interface';
+import { AppColors, Theme } from '../../interfaces/theme.interface';
 import { DOCUMENT } from '@angular/common';
 import { SessionStorageService } from '../../services/session-storage.service';
 import { ThemeState } from './theme-state.service';
@@ -43,24 +43,24 @@ export class ThemeStateEffects {
 
         const root = this.document.documentElement;
 
-        root.style.setProperty('--primary-color', theme.primary || '#4589f7');
+        root.style.setProperty('--primary-color', theme.primary || AppColors.PRIMARY);
         root.style.setProperty(
           '--secondary-color',
-          theme.secondary || '#4ebcd5'
+          theme.secondary || AppColors.SECONDARY
         );
-        root.style.setProperty('--tertiary-color', theme.tertiary || '#3f51b6');
+        root.style.setProperty('--tertiary-color', theme.tertiary || AppColors.TERTIARY);
 
         root.style.setProperty(
           '--primary-color-rgb',
-          theme.primary ? toRGB(theme.primary) : '69, 137, 247'
+          theme.primary ? toRGB(theme.primary) : AppColors.PRIMARY_RGB
         );
         root.style.setProperty(
           '--secondary-color-rgb',
-          theme.secondary ? toRGB(theme.secondary) : '78, 188, 213'
+          theme.secondary ? toRGB(theme.secondary) : AppColors.SECONDARY_RGB
         );
         root.style.setProperty(
           '--tertiary-color-rgb',
-          theme.tertiary ? toRGB(theme.tertiary) : '63, 81, 182'
+          theme.tertiary ? toRGB(theme.tertiary) : AppColors.TERTIARY_RGB
         );
 
         this.sessionStorageService.toSessionStorage<ThemeState>('theme', theme);

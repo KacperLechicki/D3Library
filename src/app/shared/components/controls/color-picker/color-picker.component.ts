@@ -11,4 +11,6 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class ColorPickerComponent {
   @Input() formGroup!: FormGroup;
   @Input() controlName = '';
+  @Input() datalistOptions: string[] = [];
+  @Input() datalistID = '';
 }
