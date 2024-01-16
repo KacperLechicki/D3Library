@@ -8,6 +8,11 @@
   gap: var(--gap-md);
   padding: var(--gap-xs) var(--gap-md);
   min-width: 15rem;
+  letter-spacing: 0.1rem;
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
   overflow: hidden;
 
   &.active {
@@ -22,9 +27,5 @@
 
   &__label {
     margin-bottom: 0;
-    font-family: var(--font-secondary);
-    font-size: 1.6rem;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
   }
 }
