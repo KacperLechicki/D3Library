@@ -20,6 +20,7 @@ export class BootstrapStateService {
   public bootstrap(): void {
     this._themeState();
     this._sidenavState();
+    this._routerState();
   }
 
   private _themeState(): void {
@@ -51,4 +52,6 @@ export class BootstrapStateService {
       opened: false,
     });
   }
+
+  private _routerState(): void {}
 }

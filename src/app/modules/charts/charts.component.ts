@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { GlowingDotBgComponent } from '../../shared/components/common/glowing-dots-bg/glowing-dots-bg.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ChartsStateService } from '../../shared/store/charts/charts-state.service';
+import { ButtonComponent } from '../../shared/components/controls/button/button.component';
 
 @Component({
   selector: 'ui-charts',
   standalone: true,
-  imports: [RouterOutlet, GlowingDotBgComponent],
+  imports: [RouterOutlet, ButtonComponent, RouterLink],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss',
 })
-export class ChartsComponent {}
+export class ChartsComponent implements OnInit, OnDestroy {
+  protected readonly currentChart =
+    this.chartsStateService.select('currentChart');
+
+  constructor(private chartsStateService: ChartsStateService) {}
+
+  ngOnInit(): void {
+    this.chartsStateService.setState({
+      currentChart: '',
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.chartsStateService.destroy();
+  }
+}
