@@ -43,12 +43,18 @@ export class ThemeStateEffects {
 
         const root = this.document.documentElement;
 
-        root.style.setProperty('--primary-color', theme.primary || AppColors.PRIMARY);
+        root.style.setProperty(
+          '--primary-color',
+          theme.primary || AppColors.PRIMARY
+        );
         root.style.setProperty(
           '--secondary-color',
           theme.secondary || AppColors.SECONDARY
         );
-        root.style.setProperty('--tertiary-color', theme.tertiary || AppColors.TERTIARY);
+        root.style.setProperty(
+          '--tertiary-color',
+          theme.tertiary || AppColors.TERTIARY
+        );
 
         root.style.setProperty(
           '--primary-color-rgb',

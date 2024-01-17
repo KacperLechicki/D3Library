@@ -1,9 +1,15 @@
 <div class="charts">
   <div class="charts__content container">
-    <sh-glowing-dots-bg />
 
-    <!-- <h3 class="charts__title"></h3> -->
-    charts work!
-    <router-outlet></router-outlet>
+    <div class="charts__content__header">
+      <sh-button type="icon" [name]="'Back to charts'" [routerLink]="['/']">
+        <i class="bi bi-arrow-left"></i>
+      </sh-button>
+      <h3 class="charts__content__header--title">{{currentChart()}}</h3>
+    </div>
+
+    <div class="charts__content__outlet">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

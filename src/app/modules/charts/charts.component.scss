@@ -8,9 +8,44 @@
     height: calc((100vh - 10rem) - var(--gap-xl));
     overflow: hidden;
 
-    sh-glowing-dots-bg {
-      position: absolute;
-      z-index: -1;
+    &__header {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-md);
+      margin-bottom: calc(var(--gap-xl));
+
+      sh-button {
+        margin-right: auto;
+
+        i {
+          font-size: 2.6rem;
+        }
+      }
+
+      &--title {
+        padding: var(--gap-sm) var(--gap-md);
+        width: max-content;
+        font-family: var(--font-primary);
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+        color: var(--light);
+        background: var(--primary-color);
+        border-radius: var(--border-rounded);
+      }
+    }
+
+    &__outlet {
+      width: 100%;
+      height: calc((100% - 10rem));
+      border: 0.3rem dashed var(--text-color);
+      border-radius: var(--border-rounded);
+      overflow: hidden;
+
+      > * {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
