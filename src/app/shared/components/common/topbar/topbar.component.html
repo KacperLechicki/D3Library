@@ -1,17 +1,17 @@
 <nav class="topbar">
   <div class="container">
     <div class="topbar__logo">
-      <img [src]="logoPath" alt="D3library app logo" class="topbar__logo--image">
+      <img width="29" height="29" [src]="logoPath" alt="D3library app logo" class="topbar__logo--image">
       <h3 class="topbar__logo--name"><span>D3</span>Library</h3>
     </div>
     <div class="topbar__tools">
 
       <sh-button [cPopover]="themeOptions" cPopoverPlacement="bottom" [cPopoverTrigger]="'click'" cButton size="lg"
-        type="icon" class="topbar__tools--theme">
+        type="icon" class="topbar__tools--theme" [name]="'Theme popover'">
         <i class="bi bi-palette-fill"></i>
       </sh-button>
 
-      <sh-button type="icon" (onClick)="toggleSidenav()" class="topbar__tools--toggle">
+      <sh-button type="icon" (onClick)="toggleSidenav()" class="topbar__tools--toggle" [name]="'Sidenav toggle'">
         @if (!sidenavOpen()) {
         <i class="bi bi-list"></i>
         } @else {

@@ -1,7 +1,7 @@
 <div class="popover-body theme-popover">
   <div class="theme-popover__control">
     <h3>Current Theme: </h3>
-    <sh-button type="icon" (onClick)="toggleTheme()">
+    <sh-button type="icon" (onClick)="toggleTheme()" [name]="'Toggle theme'">
       @if (theme().theme === Theme.LIGHT) {
       <i class="bi bi-brightness-high-fill"></i>
       } @else {

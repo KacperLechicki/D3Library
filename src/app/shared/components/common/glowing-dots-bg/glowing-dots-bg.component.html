@@ -1,25 +1,15 @@
-@defer {
+@defer (on viewport; prefetch on idle) {
+@for (g of [1, 2, 3, 4]; track g) {
 <div class="glowing">
-  <span style="--i:1;"></span>
-  <span style="--i:2;"></span>
-  <span style="--i:3;"></span>
+  @for (i of [1, 2, 3]; track i) {
+  @defer (on viewport; prefetch on idle) {
+  <span [style]="{'--i': i + 1}"></span>
+  } @placeholder {
+  <span></span>
+  }
+  }
 </div>
-
-<div class="glowing">
-  <span style="--i:1;"></span>
-  <span style="--i:2;"></span>
-  <span style="--i:3;"></span>
-</div>
-
-<div class="glowing">
-  <span style="--i:1;"></span>
-  <span style="--i:2;"></span>
-  <span style="--i:3;"></span>
-</div>
-
-<div class="glowing">
-  <span style="--i:1;"></span>
-  <span style="--i:2;"></span>
-  <span style="--i:3;"></span>
-</div>
+}
+} @placeholder {
+<div></div>
 }

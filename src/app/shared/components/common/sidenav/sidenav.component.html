@@ -1,29 +1,37 @@
+@defer (on viewport; prefetch on idle) {
 <aside>
   <div #sidenav class="sidenav" [ngClass]="{'open': sidenavOpen()}">
     <div class="sidenav__header">
-      <img [src]="logoPath" alt="D3library app logo" class="topbar__logo--image">
+      <img width="70" height="70" [src]="logoPath" alt="D3library app logo" class="topbar__logo--image">
     </div>
     <div class="sidenav__content">
       <section>
         <h3 class="sidenav__content--title">Homepage</h3>
 
         <ul>
-          <sh-sidenav-item [path]="''">
-            <i icon class="bi bi-house-door-fill"></i>
-            <h3 label>Homepage</h3>
-          </sh-sidenav-item>
+          <li>
+            <sh-sidenav-item [path]="''">
+              <i icon class="bi bi-house-door-fill"></i>
+              <h3 label>Homepage</h3>
+            </sh-sidenav-item>
+          </li>
         </ul>
       </section>
       <section>
         <h3 class="sidenav__content--title">Charts</h3>
 
         <ul>
-          <sh-sidenav-item [path]="'asd'">
-            <i icon class="bi bi-pie-chart-fill"></i>
-            <h3 label>Pie chart</h3>
-          </sh-sidenav-item>
+          <li>
+            <sh-sidenav-item [path]="'asd'">
+              <i icon class="bi bi-pie-chart-fill"></i>
+              <h3 label>Pie chart</h3>
+            </sh-sidenav-item>
+          </li>
         </ul>
       </section>
     </div>
   </div>
 </aside>
+} @placeholder {
+<aside></aside>
+}

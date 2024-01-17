@@ -19,6 +19,7 @@ interface ButtonType {
 export class ButtonComponent {
   @Input() type: 'primary' | 'secondary' | 'tertiary' | 'blank' | 'icon' =
     'primary';
+  @Input() name = '';
   @Output() onClick = new EventEmitter<MouseEvent>();
 
   protected emitClick(event: MouseEvent): void {
