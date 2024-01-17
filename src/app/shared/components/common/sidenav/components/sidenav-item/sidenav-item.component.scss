@@ -7,16 +7,19 @@
   align-items: center;
   gap: var(--gap-md);
   padding: var(--gap-xs) var(--gap-md);
-  min-width: 15rem;
+  width: 100%;
   letter-spacing: 0.1rem;
   font-family: var(--font-secondary);
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 500;
   color: var(--text-color);
   overflow: hidden;
 
+  &:not(.active) {
+    padding: calc(var(--gap-xs) + 0.1rem) calc(var(--gap-md) + 0.1rem);
+  }
+
   &.active {
-    font-weight: 500;
     border: 0.1rem solid rgba($color: var(--gray-200-rgb), $alpha: 0.7);
   }
 
@@ -31,5 +34,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 0;
+    word-break: keep-all;
+    white-space: nowrap;
   }
 }

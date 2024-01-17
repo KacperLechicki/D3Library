@@ -4,6 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('../homepage.component').then((c) => c.HomepageComponent),
+      import('../charts.component').then((c) => c.ChartsComponent),
+    children: [],
   },
 ];

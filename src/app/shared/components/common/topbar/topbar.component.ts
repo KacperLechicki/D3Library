@@ -4,11 +4,18 @@ import { AsyncPipe } from '@angular/common';
 import { PopoverModule } from '@coreui/angular';
 import { SidenavStateService } from '../../../store/sidenav/sidenav-state.service';
 import { ThemePopoverComponent } from './components/theme-popover/theme-popover.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'sh-topbar',
   standalone: true,
-  imports: [ButtonComponent, AsyncPipe, ThemePopoverComponent, PopoverModule],
+  imports: [
+    ButtonComponent,
+    AsyncPipe,
+    ThemePopoverComponent,
+    PopoverModule,
+    RouterLink,
+  ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
 })

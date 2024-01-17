@@ -1,0 +1,16 @@
+.charts {
+  padding: var(--gap-xl);
+
+  &__content {
+    position: relative;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: calc((100vh - 10rem) - var(--gap-xl));
+    overflow: hidden;
+
+    sh-glowing-dots-bg {
+      position: absolute;
+      z-index: -1;
+    }
+  }
+}

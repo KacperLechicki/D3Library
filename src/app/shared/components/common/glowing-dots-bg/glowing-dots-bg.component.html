@@ -1,15 +1,11 @@
-@defer (on viewport; prefetch on idle) {
-@for (g of [1, 2, 3, 4]; track g) {
+@for (g of [0, 1, 2, 3]; track g) {
 <div class="glowing">
-  @for (i of [1, 2, 3]; track i) {
-  @defer (on viewport; prefetch on idle) {
+  @for (i of [0, 1, 2]; track i) {
+  @defer (on viewport) {
   <span [style]="{'--i': i + 1}"></span>
   } @placeholder {
-  <span></span>
+  <div></div>
   }
   }
 </div>
-}
-} @placeholder {
-<div></div>
 }
