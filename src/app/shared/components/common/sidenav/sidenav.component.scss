@@ -21,7 +21,7 @@ aside {
     overflow-y: auto;
 
     @media only screen and (min-height: 700px) {
-      padding: calc(var(--gap-xl) * 2) var(--gap-md);
+      padding: calc(var(--gap-xl) * 2) var(--gap-sm);
     }
 
     &.open {

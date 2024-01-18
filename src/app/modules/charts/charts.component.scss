@@ -38,6 +38,7 @@
 
     &__outlet {
       margin: 0 auto;
+      padding: var(--gap-xs);
       width: 100%;
       min-height: 380px;
       aspect-ratio: 1000 / 450;

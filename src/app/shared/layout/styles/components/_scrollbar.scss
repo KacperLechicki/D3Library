@@ -1,10 +1,12 @@
 ::-webkit-scrollbar {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 1rem;
+  height: 1rem;
   background: rgba($color: var(--gray-300-rgb), $alpha: 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0.8rem;
+  border: 0.1rem solid rgba($color: var(--gray-100-rgb), $alpha: 0.4);
+  border-radius: 1rem;
   background: var(--primary-color);
+  filter: brightness(0.3);
 }
