@@ -8,7 +8,7 @@
       </sh-button>
     </div>
     <div class="accordion-item__content">
-      <ng-content></ng-content>
+      <ng-container [ngTemplateOutlet]="templates[item]"></ng-container>
     </div>
   </li>
   }

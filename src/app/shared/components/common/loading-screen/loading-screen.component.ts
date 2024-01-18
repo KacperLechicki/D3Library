@@ -3,14 +3,15 @@ import { LoadingStateService } from '../../../store/loading/loading-state.servic
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'sh-loading',
+  selector: 'sh-loading-screen',
   standalone: true,
   imports: [NgClass],
-  templateUrl: './loading.component.html',
-  styleUrl: './loading.component.scss',
+  templateUrl: './loading-screen.component.html',
+  styleUrl: './loading-screen.component.scss',
 })
-export class LoadingComponent {
-  protected readonly loadingBusy = this.loadingStateService.select('busy');
+export class LoadingScreenComponent {
+  protected readonly loadingScreen =
+    this.loadingStateService.select('loadingScreen');
 
   constructor(private loadingStateService: LoadingStateService) {}
 }

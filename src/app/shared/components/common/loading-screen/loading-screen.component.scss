@@ -1,0 +1,126 @@
+#loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 9999;
+}
+
+#loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  display: block;
+  width: 10rem;
+  height: 3rem;
+  font-family: var(--font-primary), sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+#loading-content {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  display: block;
+  margin: -8.5rem 0 0 -8.5rem;
+  width: 17rem;
+  height: 17rem;
+}
+
+#loading-content:after {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  border: 0.3rem solid var(--primary-color);
+}
+
+#loading-content:before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  border: 0.3rem solid var(--secondary-color);
+}
+
+#loading-content {
+  border: 0.3rem solid transparent;
+  border-top-color: var(--tertiary-color);
+  border-bottom-color: var(--tertiary-color);
+  border-radius: 50%;
+  animation: loader 2s linear infinite;
+  -webkit-animation: loader 2s linear infinite;
+  -moz-animation: loader 2s linear infinite;
+  -o-animation: loader 2s linear infinite;
+}
+
+#loading-content:before {
+  border: 3px solid transparent;
+  border-top-color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  border-radius: 50%;
+  animation: loader 3s linear infinite;
+  -webkit-animation: loader 3s linear infinite;
+  -moz-animation: loader 2s linear infinite;
+  -o-animation: loader 2s linear infinite;
+}
+
+#loading-content:after {
+  border: 0.3rem solid transparent;
+  border-top-color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+  border-radius: 50%;
+  animation: loader 1.5s linear infinite;
+  -webkit-animation: loader 1.5s linear infinite;
+  -moz-animation: loader 2s linear infinite;
+  -o-animation: loader 2s linear infinite;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.fade {
+  animation: fade 0.7s linear forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

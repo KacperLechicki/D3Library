@@ -16,6 +16,7 @@ import { AsyncPipe } from '@angular/common';
 import { LoadingService } from './shared/services/loading.service';
 import { LoadingStateService } from './shared/store/loading/loading-state.service';
 import { LoadingComponent } from './shared/components/common/loading/loading.component';
+import { LoadingScreenComponent } from './shared/components/common/loading-screen/loading-screen.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { LoadingComponent } from './shared/components/common/loading/loading.com
     RouterOutlet,
     AsyncPipe,
     LoadingComponent,
+    LoadingScreenComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -33,7 +35,6 @@ import { LoadingComponent } from './shared/components/common/loading/loading.com
 export class AppComponent implements OnInit, AfterViewInit {
   public readonly title = 'd3-library';
   protected sidenavWidth = 0;
-  protected loadingBusy = this.loadingStateService.select('busy');
 
   private readonly desktopBreakpoint = 1200;
 
@@ -44,11 +45,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadingStateService.setState({
+      loadingScreen: true,
+    });
     this.loadingService.interceptRouteChanges();
   }
 
   ngAfterViewInit(): void {
     this.bootstrapStateService.bootstrap();
+
+    setTimeout((): void => {
+      this.loadingStateService.setState({
+        loadingScreen: false,
+      });
+    }, 2000);
   }
 
   protected isDesktop(): Observable<boolean> {

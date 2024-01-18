@@ -1,17 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { ButtonComponent } from '../../controls/button/button.component';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'sh-accordion',
   standalone: true,
-  imports: [ButtonComponent, NgClass],
+  imports: [ButtonComponent, NgClass, NgTemplateOutlet],
   templateUrl: './accordion.component.html',
   styleUrl: './accordion.component.scss',
 })
 export class AccordionComponent implements OnInit {
   @Input() count: number = 0;
   @Input() labels: string[] = [];
+  @Input() templates: TemplateRef<any>[] = [];
 
   protected items: number[] = [];
   protected contentOpen: boolean[] = [];

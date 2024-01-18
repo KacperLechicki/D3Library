@@ -73,3 +73,17 @@ figure {
     height: 6.25em;
   }
 }
+
+.fade {
+  animation: fade 0.3s linear forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

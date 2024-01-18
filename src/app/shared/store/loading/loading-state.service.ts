@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 
 export interface LoadingState {
   busy: boolean;
+  loadingScreen: boolean;
 }
 
 @Injectable({
