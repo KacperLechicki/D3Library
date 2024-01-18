@@ -66,7 +66,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   private getScreenSize(): boolean {
     return (
-      window.innerWidth > this.desktopBreakpoint && window.innerWidth < 2300
+      window.innerWidth > this.desktopBreakpoint && window.innerWidth < 2000
     );
   }
 }

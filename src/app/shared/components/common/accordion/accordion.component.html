@@ -1,0 +1,15 @@
+<ul class="accordion--container">
+  @for (item of items; track item) {
+  <li class="accordion-item" [ngClass]="{'open': contentOpen[item], 'closed': !contentOpen[item]}">
+    <div class="accordion-item__header">
+      <h3 class="accordion-item__header--title">{{labels[item]}}</h3>
+      <sh-button [type]="'icon'" (onClick)="contentOpen[item] = !contentOpen[item]">
+        <i class="bi bi-arrow-up" [ngClass]="{'rotateUp': !contentOpen[item], 'rotateDown': contentOpen[item]}"></i>
+      </sh-button>
+    </div>
+    <div class="accordion-item__content">
+      <ng-content></ng-content>
+    </div>
+  </li>
+  }
+</ul>
