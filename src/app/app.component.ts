@@ -48,7 +48,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.loadingStateService.setState({
       loadingScreen: true,
     });
-    this.loadingService.interceptRouteChanges();
   }
 
   ngAfterViewInit(): void {
@@ -58,6 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.loadingStateService.setState({
         loadingScreen: false,
       });
+
+      this.loadingService.interceptRouteChanges();
     }, 2000);
   }
 

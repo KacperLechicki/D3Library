@@ -1,9 +1,9 @@
 import {
   Component,
   ElementRef,
-  Input,
   OnDestroy,
   OnInit,
+  Signal,
   ViewChild,
 } from '@angular/core';
 import { ChartsStateService } from '../../../../shared/store/charts/charts-state.service';
@@ -15,11 +15,8 @@ import {
   distinctUntilChanged,
   fromEvent,
 } from 'rxjs';
-
-export interface Data {
-  letter: string;
-  frequency: number;
-}
+import { BarChartMockData } from '../../../../shared/mocks/raw/charts/bar-chart.data';
+import { BarChartStateService } from '../../../../shared/store/charts/bar-chart/bar-chart-state.service';
 
 @Component({
   selector: 'bar-chart',
@@ -31,39 +28,25 @@ export interface Data {
 export class BarChartComponent implements OnInit, OnDestroy {
   @ViewChild('barChart', { static: true }) private chartContainer!: ElementRef;
 
-  @Input() data!: Data[];
-
   private _subscriptions = new Subscription();
-  private margin = { top: 40, right: 40, bottom: 50, left: 60 };
+  private data = this.barChartStateService.select('data') as Signal<any[]>;
+  private constants = this.chartsStateService.select('constants');
 
-  constructor(private chartsStateService: ChartsStateService) {}
+  constructor(
+    private chartsStateService: ChartsStateService,
+    private barChartStateService: BarChartStateService
+  ) {}
 
   ngOnInit() {
     this.chartsStateService.setState({
       currentChart: 'Bar Chart',
     });
 
-    this.data = [
-      {
-        letter: 'a',
-        frequency: 2,
-      },
-      {
-        letter: 'b',
-        frequency: 5,
-      },
-      {
-        letter: 'c',
-        frequency: 3,
-      },
-      {
-        letter: 'd',
-        frequency: 6,
-      },
-    ];
+    this.barChartStateService.setState({
+      data: BarChartMockData,
+    });
 
     this.createChart();
-
     this._subscriptions.add(
       fromEvent(window, 'resize')
         .pipe(debounceTime(300), distinctUntilChanged())
@@ -81,19 +64,16 @@ export class BarChartComponent implements OnInit, OnDestroy {
     d3.select('svg').remove();
 
     const element = this.chartContainer.nativeElement;
-    const data = this.data;
+    const data = this.data();
+    const constants = this.constants();
 
-    const svg = d3
-      .select(element)
-      .append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%')
-      .attr('viewBox', `0 0 ${element.offsetWidth} ${element.offsetHeight}`);
+    const {
+      svg: svg,
+      width: contentWidth,
+      height: contentHeight,
+    } = this.chartsStateService.getChartSize(element);
 
-    const contentWidth =
-      element.offsetWidth - this.margin.left - this.margin.right;
-    const contentHeight =
-      element.offsetHeight - this.margin.top - this.margin.bottom;
+    ////////////////////////////////////////////////////////////////
 
     const x = d3
       .scaleBand()
@@ -116,7 +96,7 @@ export class BarChartComponent implements OnInit, OnDestroy {
       .append('g')
       .attr(
         'transform',
-        'translate(' + this.margin.left + ',' + this.margin.top + ')'
+        'translate(' + constants.margin.left + ',' + constants.margin.top + ')'
       );
 
     g.append('g')

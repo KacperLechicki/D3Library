@@ -3,9 +3,9 @@
   background: var(--background-color);
 
   .accordion-item {
-    margin-bottom: var(--gap-sm);
+    margin-bottom: var(--gap-md);
     width: 100%;
-    border: 0.1rem solid rgba($color: var(--gray-200-rgb), $alpha: 0.8);
+    border: 0.1rem solid var(--text-color);
     border-radius: var(--border-rounded);
 
     &.closed {
@@ -18,12 +18,19 @@
       }
     }
 
+    &.open {
+      .accordion-item__header {
+        border-radius: 0;
+      }
+    }
+
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: var(--gap-md);
-      border-bottom: 0.1rem solid rgba($color: var(--gray-200-rgb), $alpha: 0.8);
+      border-bottom: 0.1rem solid var(--text-color);
+      border-radius: var(--border-rounded);
 
       &--title {
         padding: var(--gap-sm) var(--gap-md);

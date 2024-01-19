@@ -20,6 +20,9 @@ export class ChartsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.chartsStateService.setState({
       currentChart: '',
+      constants: {
+        margin: { top: 40, right: 30, bottom: 40, left: 60 },
+      },
     });
   }
 

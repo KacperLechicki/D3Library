@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { distinctUntilChanged, filter } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 import { LoadingStateService } from '../store/loading/loading-state.service';
 
 @Injectable({
