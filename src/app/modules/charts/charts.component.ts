@@ -3,11 +3,18 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { ChartsStateService } from '../../shared/store/charts/charts-state.service';
 import { ButtonComponent } from '../../shared/components/controls/button/button.component';
 import { AccordionComponent } from '../../shared/components/common/accordion/accordion.component';
+import { CodeSnippetComponent } from '../../shared/components/common/code-snippet/code-snippet.component';
 
 @Component({
   selector: 'ui-charts',
   standalone: true,
-  imports: [RouterOutlet, ButtonComponent, RouterLink, AccordionComponent],
+  imports: [
+    RouterOutlet,
+    ButtonComponent,
+    RouterLink,
+    AccordionComponent,
+    CodeSnippetComponent,
+  ],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss',
 })

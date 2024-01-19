@@ -14,15 +14,15 @@
 
     <div class="charts__content__filters">
       <sh-accordion [count]="2" [labels]="['Configuration', 'Code']"
-        [templates]="[template1, template2]"></sh-accordion>
+        [templates]="[configuration, code]"></sh-accordion>
     </div>
   </div>
 </div>
 
-<ng-template #template1>
+<ng-template #configuration>
   <p>Treść dla szablonu 1</p>
 </ng-template>
 
-<ng-template #template2>
-  <p>Treść dla szablonu 2</p>
+<ng-template #code>
+  <sh-code-snippet></sh-code-snippet>
 </ng-template>
