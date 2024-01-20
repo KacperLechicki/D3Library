@@ -1,5 +1,5 @@
 <div class="code-snippet">
-  <code>
-    import * as d3 from 'd3';
-  </code>
+  @if (code()) {
+  <ng-container [ngTemplateOutlet]="code()"></ng-container>
+  }
 </div>

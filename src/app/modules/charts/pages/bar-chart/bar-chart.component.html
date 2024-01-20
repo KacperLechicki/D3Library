@@ -3,3 +3,54 @@
     <div #barChart id="bar-chart" class="chart"></div>
   </sh-chart-card>
 </div>
+
+<ng-template #barChartCode>
+  <code>
+    import * as d3 from 'd3';
+    <br>
+    <br>
+    ngOnInit(): void (
+      <br>
+      &nbsp; this.createChart();
+      <br>
+    )
+    <br>
+    <br>
+    private createChart(): void (
+    <br>
+    &nbsp; const element = this.chartContainer.nativeElement;
+    <br>
+    &nbsp; const data = ??? <span class="tertiary">//your data</span>
+    <br>
+    <br>
+    &nbsp; const marginTop = <span class="tertiary">{{constants().margin.top}}</span>
+    <br>
+    &nbsp; const marginRight = <span class="tertiary">{{constants().margin.right}}</span>
+    <br>
+    &nbsp; const marginBottom = <span class="tertiary">{{constants().margin.bottom}}</span>
+    <br>
+    &nbsp; const marginLeft = <span class="tertiary">{{constants().margin.left}}</span>
+    <br>
+    <br>
+    &nbsp; const svg = d3
+    <br>
+    &nbsp; .select(element)
+    <br>
+    &nbsp; .append('svg')
+    <br>
+    &nbsp; .attr('width', '100%')
+    <br>
+    &nbsp; .attr('height', '100%')
+    <br>
+    &nbsp; .attr('viewBox', `0 0 $(element.offsetWidth) $(element.offsetHeight)`);
+    <br>
+    <br>
+    &nbsp; const contentWidth = element.offsetWidth - marginLeft - marginRight;
+    <br>
+    &nbsp; const contentHeight = element.offsetHeight - marginTop - marginBottom;
+    <br>
+    <br>
+    <br>
+    )
+  </code>
+</ng-template>

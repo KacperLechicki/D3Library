@@ -5,7 +5,7 @@
       <sh-button type="icon" [name]="'Back to charts'" [routerLink]="['/']">
         <i class="bi bi-arrow-left"></i>
       </sh-button>
-      <h3 class="charts__content__header--title">{{currentChart()}}</h3>
+      <h3 (click)="changeData()" class="charts__content__header--title">{{currentChart()}}</h3>
     </div>
 
     <div class="charts__content__outlet">
@@ -13,8 +13,7 @@
     </div>
 
     <div class="charts__content__filters">
-      <sh-accordion [count]="2" [labels]="['Configuration', 'Code']"
-        [templates]="[configuration, code]"></sh-accordion>
+      <sh-accordion [count]="2" [labels]="['Configuration', 'Code']" [templates]="[configuration, code]"></sh-accordion>
     </div>
   </div>
 </div>
@@ -24,5 +23,5 @@
 </ng-template>
 
 <ng-template #code>
-  <sh-code-snippet></sh-code-snippet>
+  <sh-code-snippet />
 </ng-template>

@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Signal,
+  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { ChartsStateService } from '../../../../shared/store/charts/charts-state.service';
@@ -27,10 +28,13 @@ import { BarChartStateService } from '../../../../shared/store/charts/bar-chart/
 })
 export class BarChartComponent implements OnInit, OnDestroy {
   @ViewChild('barChart', { static: true }) private chartContainer!: ElementRef;
+  @ViewChild('barChartCode', { static: true })
+  private chartCode!: TemplateRef<any>;
+
+  protected data = this.barChartStateService.select('data') as Signal<any[]>;
+  protected constants = this.chartsStateService.select('constants');
 
   private _subscriptions = new Subscription();
-  private data = this.barChartStateService.select('data') as Signal<any[]>;
-  private constants = this.chartsStateService.select('constants');
 
   constructor(
     private chartsStateService: ChartsStateService,
@@ -40,6 +44,7 @@ export class BarChartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.chartsStateService.setState({
       currentChart: 'Bar Chart',
+      code: this.chartCode,
     });
 
     this.barChartStateService.setState({

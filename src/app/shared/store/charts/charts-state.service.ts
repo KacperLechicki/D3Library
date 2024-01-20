@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, TemplateRef } from '@angular/core';
 import { SignalsStoreService } from '../signals-store.service';
 import { Subject } from 'rxjs';
 import * as d3 from 'd3';
@@ -11,6 +11,7 @@ interface ChartSize {
 
 export interface ChartsState {
   currentChart: string;
+  code: TemplateRef<any>;
   constants: {
     margin: { top: number; right: number; bottom: number; left: number };
   };
