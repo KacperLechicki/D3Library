@@ -30,12 +30,36 @@
     align-items: center;
   }
 
-  &__label {
+  &__label--container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 0;
-    word-break: keep-all;
+    width: 100%;
     white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__label--item {
+    display: inline-block;
+  }
+}
+
+.label-overflowed {
+  animation: move 11s linear infinite;
+}
+
+@keyframes move {
+  from {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-100%, 0);
+  }
+  90% {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, 0);
   }
 }

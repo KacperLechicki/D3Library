@@ -5,7 +5,7 @@
       <sh-button type="icon" [name]="'Back to charts'" [routerLink]="['/']">
         <i class="bi bi-arrow-left"></i>
       </sh-button>
-      <h3 (click)="changeData()" class="charts__content__header--title">{{currentChart()}}</h3>
+      <h3 class="charts__content__header--title">{{currentChart()}}</h3>
     </div>
 
     <div class="charts__content__outlet">
@@ -19,7 +19,7 @@
 </div>
 
 <ng-template #configuration>
-  <p>Treść dla szablonu 1</p>
+  <sh-chart-configuration />
 </ng-template>
 
 <ng-template #code>

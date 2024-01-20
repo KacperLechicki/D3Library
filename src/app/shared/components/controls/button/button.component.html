@@ -1,3 +1,7 @@
 <button type="button" [name]="name" (click)="emitClick($event)" class="button" [ngClass]="checkType()">
-  <ng-content />
+  @if (type === 'icon') {
+  <ng-content></ng-content>
+  } @else {
+  <span class="label">{{name}}</span>
+  }
 </button>

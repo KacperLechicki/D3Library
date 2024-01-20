@@ -4,9 +4,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 interface ButtonType {
   primary: boolean;
   secondary: boolean;
-  tertiary: boolean;
+  outlined: boolean;
   blank: boolean;
   icon: boolean;
+  dark: boolean;
 }
 
 @Component({
@@ -17,9 +18,10 @@ interface ButtonType {
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() type: 'primary' | 'secondary' | 'tertiary' | 'blank' | 'icon' =
+  @Input() type: 'primary' | 'secondary' | 'outlined' | 'blank' | 'icon' =
     'primary';
   @Input() name = '';
+  @Input() dark = false;
   @Output() onClick = new EventEmitter<MouseEvent>();
 
   protected emitClick(event: MouseEvent): void {
@@ -30,9 +32,10 @@ export class ButtonComponent {
     return {
       primary: this.type === 'primary',
       secondary: this.type === 'secondary',
-      tertiary: this.type === 'tertiary',
+      outlined: this.type === 'outlined',
       blank: this.type === 'blank',
       icon: this.type === 'icon',
+      dark: this.dark === true,
     };
   }
 }

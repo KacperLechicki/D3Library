@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { LoadingStateService } from '../../../store/loading/loading-state.service';
 import { NgClass } from '@angular/common';
 
@@ -11,6 +11,17 @@ import { NgClass } from '@angular/common';
 })
 export class LoadingComponent {
   protected readonly loadingBusy = this.loadingStateService.select('busy');
+  protected loadingOn = false;
 
-  constructor(private loadingStateService: LoadingStateService) {}
+  constructor(private loadingStateService: LoadingStateService) {
+    effect((): void => {
+      if (!this.loadingBusy()) {
+        setTimeout((): void => {
+          this.loadingOn = false;
+        }, 500);
+      } else {
+        this.loadingOn = true;
+      }
+    });
+  }
 }

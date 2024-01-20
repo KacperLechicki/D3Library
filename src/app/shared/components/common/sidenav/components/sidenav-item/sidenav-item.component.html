@@ -1,5 +1,7 @@
 <div class="sidenav-item blank" [routerLink]="path" routerLinkActive="active"
   [routerLinkActiveOptions]="{exact: path === '' ? true : false}">
   <ng-content select="[icon]" class="sidenav-item__icon" />
-  <h3 class="sidenav-item__label">{{label}}</h3>
+  <div #labelContainerRef class="sidenav-item__label--container">
+    <h3 #labelRef class="sidenav-item__label--item">{{label}}</h3>
+  </div>
 </div>

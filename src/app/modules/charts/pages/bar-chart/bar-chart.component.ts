@@ -6,6 +6,7 @@ import {
   Signal,
   TemplateRef,
   ViewChild,
+  effect,
 } from '@angular/core';
 import { ChartsStateService } from '../../../../shared/store/charts/charts-state.service';
 import { ChartCardComponent } from '../../../../shared/components/common/chart-card/chart-card.component';
@@ -17,7 +18,6 @@ import {
   fromEvent,
 } from 'rxjs';
 import { BarChartMockData } from '../../../../shared/mocks/raw/charts/bar-chart.data';
-import { BarChartStateService } from '../../../../shared/store/charts/bar-chart/bar-chart-state.service';
 
 @Component({
   selector: 'bar-chart',
@@ -31,15 +31,16 @@ export class BarChartComponent implements OnInit, OnDestroy {
   @ViewChild('barChartCode', { static: true })
   private chartCode!: TemplateRef<any>;
 
-  protected data = this.barChartStateService.select('data') as Signal<any[]>;
+  protected data = this.chartsStateService.select('data') as Signal<any[]>;
   protected constants = this.chartsStateService.select('constants');
 
   private _subscriptions = new Subscription();
 
-  constructor(
-    private chartsStateService: ChartsStateService,
-    private barChartStateService: BarChartStateService
-  ) {}
+  constructor(private chartsStateService: ChartsStateService) {
+    effect((): void => {
+      this.createChart();
+    });
+  }
 
   ngOnInit() {
     this.chartsStateService.setState({
@@ -47,7 +48,7 @@ export class BarChartComponent implements OnInit, OnDestroy {
       code: this.chartCode,
     });
 
-    this.barChartStateService.setState({
+    this.chartsStateService.setState({
       data: BarChartMockData,
     });
 

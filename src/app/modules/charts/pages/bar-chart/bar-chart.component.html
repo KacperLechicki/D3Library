@@ -6,51 +6,35 @@
 
 <ng-template #barChartCode>
   <code>
-    import * as d3 from 'd3';
+    const element = this.chartContainer.nativeElement;
+    <br>
+    const data = ??? <span class="tertiary">//your data</span>
     <br>
     <br>
-    ngOnInit(): void (
-      <br>
-      &nbsp; this.createChart();
-      <br>
-    )
+    const marginTop = <span class="tertiary">{{constants().margin.top}}</span>
+    <br>
+    const marginRight = <span class="tertiary">{{constants().margin.right}}</span>
+    <br>
+    const marginBottom = <span class="tertiary">{{constants().margin.bottom}}</span>
+    <br>
+    const marginLeft = <span class="tertiary">{{constants().margin.left}}</span>
     <br>
     <br>
-    private createChart(): void (
+    const svg = d3
     <br>
-    &nbsp; const element = this.chartContainer.nativeElement;
+    .select(element)
     <br>
-    &nbsp; const data = ??? <span class="tertiary">//your data</span>
+    .append('svg')
     <br>
+    .attr('width', '100%')
     <br>
-    &nbsp; const marginTop = <span class="tertiary">{{constants().margin.top}}</span>
+    .attr('height', '100%')
     <br>
-    &nbsp; const marginRight = <span class="tertiary">{{constants().margin.right}}</span>
-    <br>
-    &nbsp; const marginBottom = <span class="tertiary">{{constants().margin.bottom}}</span>
-    <br>
-    &nbsp; const marginLeft = <span class="tertiary">{{constants().margin.left}}</span>
+    .attr('viewBox', `0 0 $(element.offsetWidth) $(element.offsetHeight)`);
     <br>
     <br>
-    &nbsp; const svg = d3
+    const contentWidth = element.offsetWidth - marginLeft - marginRight;
     <br>
-    &nbsp; .select(element)
-    <br>
-    &nbsp; .append('svg')
-    <br>
-    &nbsp; .attr('width', '100%')
-    <br>
-    &nbsp; .attr('height', '100%')
-    <br>
-    &nbsp; .attr('viewBox', `0 0 $(element.offsetWidth) $(element.offsetHeight)`);
-    <br>
-    <br>
-    &nbsp; const contentWidth = element.offsetWidth - marginLeft - marginRight;
-    <br>
-    &nbsp; const contentHeight = element.offsetHeight - marginTop - marginBottom;
-    <br>
-    <br>
-    <br>
-    )
+    const contentHeight = element.offsetHeight - marginTop - marginBottom;
   </code>
 </ng-template>

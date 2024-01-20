@@ -72,3 +72,7 @@ aside {
     }
   }
 }
+
+.horizontal-bar {
+  transform: rotate(90deg) rotateY(180deg);
+}

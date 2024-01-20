@@ -1,0 +1,5 @@
+<div class="group" [formGroup]="formGroup">
+  <label class="label" [ngClass]="{'dark': dark}" [for]="label">{{label}}</label>
+  <input [name]="label" [formControlName]="controlName" [ngClass]="{'dark': dark}" [placeholder]="label" [type]="type"
+    class="input">
+</div>

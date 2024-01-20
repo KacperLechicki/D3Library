@@ -12,9 +12,12 @@ interface ChartSize {
 export interface ChartsState {
   currentChart: string;
   code: TemplateRef<any>;
+  data: any;
   constants: {
     margin: { top: number; right: number; bottom: number; left: number };
   };
+  config: any;
+  configTemplate: TemplateRef<any>;
 }
 
 @Injectable({

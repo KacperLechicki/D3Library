@@ -4,7 +4,7 @@ import { ChartsStateService } from '../../shared/store/charts/charts-state.servi
 import { ButtonComponent } from '../../shared/components/controls/button/button.component';
 import { AccordionComponent } from '../../shared/components/common/accordion/accordion.component';
 import { CodeSnippetComponent } from '../../shared/components/common/code-snippet/code-snippet.component';
-import { BarChartStateService } from '../../shared/store/charts/bar-chart/bar-chart-state.service';
+import { ChartConfigurationComponent } from '../../shared/components/common/chart-configuration/chart-configuration.component';
 
 @Component({
   selector: 'ui-charts',
@@ -15,6 +15,7 @@ import { BarChartStateService } from '../../shared/store/charts/bar-chart/bar-ch
     RouterLink,
     AccordionComponent,
     CodeSnippetComponent,
+    ChartConfigurationComponent,
   ],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss',
@@ -23,14 +24,15 @@ export class ChartsComponent implements OnInit, OnDestroy {
   protected readonly currentChart =
     this.chartsStateService.select('currentChart');
 
-  constructor(
-    private chartsStateService: ChartsStateService,
-    private barChartStateService: BarChartStateService
-  ) {}
+  constructor(private chartsStateService: ChartsStateService) {}
 
   ngOnInit(): void {
     this.chartsStateService.setState({
       currentChart: '',
+      data: undefined,
+      config: undefined,
+      configTemplate: undefined,
+      code: undefined,
       constants: {
         margin: { top: 40, right: 30, bottom: 40, left: 60 },
       },
@@ -39,23 +41,5 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.chartsStateService.destroy();
-  }
-
-  protected changeData(): void {
-    this.barChartStateService.setState({
-      data: [
-        {
-          field: 'a',
-          value: 23,
-        },
-        {
-          field: 'b',
-          value: {
-            value1: 1,
-            value2: 2,
-          },
-        },
-      ],
-    });
   }
 }
