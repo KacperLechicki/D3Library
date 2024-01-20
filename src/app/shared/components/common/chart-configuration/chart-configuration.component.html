@@ -1,36 +1,15 @@
 <div class="configuration">
   @if (constants()) {
   <div class="configuration__constants">
-    <section class="section">
-      <h3 class="section-label">Margin</h3>
-      <form class="section-form" [formGroup]="constantsFormGroup">
-        <div class="section-form__control">
-          <sh-input [dark]="true" [formGroup]="getFormGroup('margin')" [controlName]="'marginTop'"
-            [label]="'Margin Top'" />
-        </div>
-        <div class="section-form__control">
-          <sh-input [dark]="true" [formGroup]="getFormGroup('margin')" [controlName]="'marginBottom'"
-            [label]="'Margin Bottom'" />
-        </div>
-        <div class="section-form__control">
-          <sh-input [dark]="true" [formGroup]="getFormGroup('margin')" [controlName]="'marginRight'"
-            [label]="'Margin Right'" />
-        </div>
-        <div class="section-form__control">
-          <sh-input [dark]="true" [formGroup]="getFormGroup('margin')" [controlName]="'marginLeft'"
-            [label]="'Margin Left'" />
-        </div>
-      </form>
-    </section>
+    <sh-accordion [count]="1" [labels]="['Margin']" [templates]="[margin]"></sh-accordion>
+    
+    <ng-template #margin>
+      <chart-config-margin />
+    </ng-template>
   </div>
   }
 
   @if (configuration()) {
   <ng-container [ngTemplateOutlet]="configuration()"></ng-container>
   }
-
-  <div class="configuration__buttons">
-    <sh-button [name]="'Set Default'" [type]="'blank'" [dark]="true" (onClick)="setDefault()" />
-    <sh-button [name]="'Apply'" [type]="'secondary'" (onClick)="submit()" />
-  </div>
 </div>

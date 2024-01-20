@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ChartsStateService } from '../../../../store/charts/charts-state.service';
+import { ChartsStateService } from '../../../../../store/charts/charts-state.service';
 
 @Injectable()
-export class ConstantsFormService {
-  private _constantsForm!: FormGroup;
+export class ChartConfigMarginService {
+  private _marginForm!: FormGroup;
 
   constructor(private chartsStateService: ChartsStateService) {
     this.buildForm();
@@ -12,8 +12,8 @@ export class ConstantsFormService {
 
   public buildForm(): FormGroup {
     const constantsDefault = this.chartsStateService.select('constants')();
-    this._constantsForm = new FormGroup({
-      margin: new FormGroup({
+
+    this._marginForm = new FormGroup({
         marginTop: new FormControl<number>(constantsDefault.margin.top || 0),
         marginBottom: new FormControl<number>(
           constantsDefault.margin.bottom || 0
@@ -22,10 +22,9 @@ export class ConstantsFormService {
           constantsDefault.margin.right || 0
         ),
         marginLeft: new FormControl<number>(constantsDefault.margin.left || 0),
-      }),
     });
 
-    return this._constantsForm;
+    return this._marginForm;
   }
 
   public submit(form: FormGroup): void {
@@ -35,10 +34,10 @@ export class ConstantsFormService {
       this.chartsStateService.setState({
         constants: {
           margin: {
-            top: formValue.margin.marginTop,
-            bottom: formValue.margin.marginBottom,
-            right: formValue.margin.marginRight,
-            left: formValue.margin.marginLeft,
+            top: formValue.marginTop,
+            bottom: formValue.marginBottom,
+            right: formValue.marginRight,
+            left: formValue.marginLeft,
           },
         },
       });

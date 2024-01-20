@@ -1,0 +1,22 @@
+<section class="section">
+  <h3 class="section-label">Margin</h3>
+  <form class="section-form" [formGroup]="marginFormGroup">
+    <div class="section-form__control">
+      <sh-input [dark]="true" [formGroup]="marginFormGroup" [controlName]="'marginTop'" [label]="'Margin Top'" />
+    </div>
+    <div class="section-form__control">
+      <sh-input [dark]="true" [formGroup]="marginFormGroup" [controlName]="'marginBottom'" [label]="'Margin Bottom'" />
+    </div>
+    <div class="section-form__control">
+      <sh-input [dark]="true" [formGroup]="marginFormGroup" [controlName]="'marginRight'" [label]="'Margin Right'" />
+    </div>
+    <div class="section-form__control">
+      <sh-input [dark]="true" [formGroup]="marginFormGroup" [controlName]="'marginLeft'" [label]="'Margin Left'" />
+    </div>
+  </form>
+
+  <div class="section__buttons">
+    <sh-button [name]="'Set Default'" [type]="'blank'" [dark]="true" (onClick)="setDefault()" />
+    <sh-button [name]="'Apply'" [type]="'secondary'" (onClick)="submit()" />
+  </div>
+</section>
