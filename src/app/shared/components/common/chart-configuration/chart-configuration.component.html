@@ -1,11 +1,7 @@
 <div class="configuration">
   @if (constants()) {
   <div class="configuration__constants">
-    <sh-accordion [count]="1" [labels]="['Margin']" [templates]="[margin]"></sh-accordion>
-    
-    <ng-template #margin>
-      <chart-config-margin />
-    </ng-template>
+    <chart-config-margin />
   </div>
   }
 

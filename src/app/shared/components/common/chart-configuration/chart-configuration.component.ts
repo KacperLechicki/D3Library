@@ -2,12 +2,11 @@ import { Component, Signal, TemplateRef } from '@angular/core';
 import { ChartsStateService } from '../../../store/charts/charts-state.service';
 import { NgTemplateOutlet } from '@angular/common';
 import { ChartConfigMarginComponent } from './chart-config-margin/chart-config-margin.component';
-import { AccordionComponent } from '../accordion/accordion.component';
 
 @Component({
   selector: 'sh-chart-configuration',
   standalone: true,
-  imports: [NgTemplateOutlet, ChartConfigMarginComponent, AccordionComponent],
+  imports: [NgTemplateOutlet, ChartConfigMarginComponent],
   templateUrl: './chart-configuration.component.html',
   styleUrl: './chart-configuration.component.scss',
 })

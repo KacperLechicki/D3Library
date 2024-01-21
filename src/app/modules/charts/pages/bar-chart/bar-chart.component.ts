@@ -18,6 +18,7 @@ import {
   fromEvent,
 } from 'rxjs';
 import { BarChartMockData } from '../../../../shared/mocks/raw/charts/bar-chart.data';
+import { ChartConfigMarginComponent } from '../../../../shared/components/common/chart-configuration/chart-config-margin/chart-config-margin.component';
 
 @Component({
   selector: 'bar-chart',
@@ -46,9 +47,6 @@ export class BarChartComponent implements OnInit, OnDestroy {
     this.chartsStateService.setState({
       currentChart: 'Bar Chart',
       code: this.chartCode,
-    });
-
-    this.chartsStateService.setState({
       data: BarChartMockData,
     });
 

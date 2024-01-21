@@ -22,6 +22,7 @@ export class AccordionComponent implements OnInit {
       { length: this.count },
       (_: unknown, i: number): number => i
     );
+
     this.contentOpen = Array(this.count).fill(false);
   }
 }
