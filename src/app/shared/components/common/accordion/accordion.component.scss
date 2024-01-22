@@ -18,12 +18,6 @@
       }
     }
 
-    &.open {
-      .accordion-item__header {
-        border-radius: 0;
-      }
-    }
-
     &__header {
       display: flex;
       justify-content: space-between;
@@ -42,6 +36,14 @@
         color: var(--light);
         background: var(--primary-color);
         border-radius: var(--border-rounded);
+
+        &.secondary {
+          background: var(--secondary-color);
+        }
+
+        &.tertiary {
+          background: var(--tertiary-color);
+        }
       }
 
       i {

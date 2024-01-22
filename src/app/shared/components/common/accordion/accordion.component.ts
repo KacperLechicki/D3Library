@@ -13,6 +13,7 @@ export class AccordionComponent implements OnInit {
   @Input() count: number = 0;
   @Input() labels: string[] = [];
   @Input() templates: TemplateRef<any>[] = [];
+  @Input() color: 'primary' | 'secondary' | 'tertiary' = 'primary';
 
   protected items: number[] = [];
   protected contentOpen: boolean[] = [];

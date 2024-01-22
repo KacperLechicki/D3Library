@@ -8,7 +8,7 @@ import {
   ViewChild,
   effect,
 } from '@angular/core';
-import { ChartsStateService } from '../../../../shared/store/charts/charts-state.service';
+import { BarChartStateService } from '../../../../shared/store/charts/bar-chart/bar-chart-state.service';
 import { ChartCardComponent } from '../../../../shared/components/common/chart-card/chart-card.component';
 import * as d3 from 'd3';
 import {
@@ -17,8 +17,8 @@ import {
   distinctUntilChanged,
   fromEvent,
 } from 'rxjs';
+import { ChartsStateService } from '../../../../shared/store/charts/charts-state.service';
 import { BarChartMockData } from '../../../../shared/mocks/raw/charts/bar-chart.data';
-import { ChartConfigMarginComponent } from '../../../../shared/components/common/chart-configuration/chart-config-margin/chart-config-margin.component';
 
 @Component({
   selector: 'bar-chart',
@@ -32,22 +32,41 @@ export class BarChartComponent implements OnInit, OnDestroy {
   @ViewChild('barChartCode', { static: true })
   private chartCode!: TemplateRef<any>;
 
-  protected data = this.chartsStateService.select('data') as Signal<any[]>;
-  protected constants = this.chartsStateService.select('constants');
+  protected data = this.barChartStateService.select('data') as Signal<any[]>;
+  protected configuration = this.barChartStateService.select('configuration');
 
   private _subscriptions = new Subscription();
 
-  constructor(private chartsStateService: ChartsStateService) {
+  constructor(
+    private barChartStateService: BarChartStateService,
+    private chartsStateService: ChartsStateService
+  ) {
     effect((): void => {
       this.createChart();
     });
   }
 
   ngOnInit() {
+    if (typeof document !== 'undefined') {
+      document.title = 'D3Library | Bar Chart';
+    }
+
     this.chartsStateService.setState({
       currentChart: 'Bar Chart',
+    });
+
+    this.barChartStateService.setState({
       code: this.chartCode,
-      data: BarChartMockData,
+      configuration: {
+        margin: {
+          top: 40,
+          bottom: 40,
+          left: 60,
+          right: 30,
+        },
+        xAxisProperty: '',
+        yAxisProperty: '',
+      },
     });
 
     this.createChart();
@@ -68,64 +87,82 @@ export class BarChartComponent implements OnInit, OnDestroy {
     d3.select('svg').remove();
 
     const element = this.chartContainer.nativeElement;
-    const data = this.data();
-    const constants = this.constants();
+    const data = this.data() || BarChartMockData;
+    const configuration = this.configuration();
 
     const {
       svg: svg,
       width: contentWidth,
       height: contentHeight,
-    } = this.chartsStateService.getChartSize(element);
+    } = this.barChartStateService.getChartSize(element);
 
     ////////////////////////////////////////////////////////////////
 
-    const x = d3
-      .scaleBand()
-      .rangeRound([0, contentWidth])
-      .padding(0.1)
-      .domain(data.map((d) => d.letter));
+    const xAxisProperty =
+      this.barChartStateService.select('configuration')()?.xAxisProperty ||
+      'letter';
+    const yAxisProperty =
+      this.barChartStateService.select('configuration')()?.yAxisProperty ||
+      'frequency';
 
-    const y = d3
-      .scaleLinear()
-      .rangeRound([contentHeight, 0])
-      .domain([
-        0,
-        d3.max(
-          data.filter((d) => d.frequency !== undefined),
-          (d) => d.frequency
-        ) as number,
-      ]);
+    if (
+      xAxisProperty &&
+      xAxisProperty !== '' &&
+      yAxisProperty &&
+      yAxisProperty !== ''
+    ) {
+      const x = d3
+        .scaleBand()
+        .rangeRound([0, contentWidth])
+        .padding(0.1)
+        .domain(data.map((d) => d[xAxisProperty]));
 
-    const g = svg
-      .append('g')
-      .attr(
-        'transform',
-        'translate(' + constants.margin.left + ',' + constants.margin.top + ')'
-      );
+      const y = d3
+        .scaleLinear()
+        .rangeRound([contentHeight, 0])
+        .domain([
+          0,
+          d3.max(
+            data.filter((d) => d[yAxisProperty] !== undefined),
+            (d) => d[yAxisProperty]
+          ) as number,
+        ]);
 
-    g.append('g')
-      .attr('class', 'axis axis--x')
-      .attr('transform', 'translate(0,' + contentHeight + ')')
-      .call(d3.axisBottom(x));
+      const g = svg
+        .append('g')
+        .attr(
+          'transform',
+          'translate(' +
+            (configuration.margin?.left || 0) +
+            ',' +
+            (configuration.margin?.top || 0) +
+            ')'
+        );
 
-    g.append('g')
-      .attr('class', 'axis axis--y')
-      .call(d3.axisLeft(y).ticks(10, '%'))
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 6)
-      .attr('dy', '0.71em')
-      .attr('text-anchor', 'end')
-      .text('Frequency');
+      g.append('g')
+        .attr('class', 'axis axis--x')
+        .attr('transform', 'translate(0,' + contentHeight + ')')
+        .call(d3.axisBottom(x));
 
-    g.selectAll('.bar')
-      .data(data)
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('x', (d) => x(d.letter) as string | number)
-      .attr('y', (d) => y(d.frequency))
-      .attr('width', x.bandwidth())
-      .attr('height', (d) => contentHeight - y(d.frequency));
+      g.append('g')
+        .attr('class', 'axis axis--y')
+        .call(d3.axisLeft(y).ticks(10, '%'))
+        .append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 6)
+        .attr('dy', '0.71em')
+        .attr('text-anchor', 'end')
+        .text('Frequency');
+
+      g.selectAll('.bar')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('x', (d) => x(d[xAxisProperty]) as string | number)
+        .attr('y', (d) => y(d[yAxisProperty]))
+        .attr('width', x.bandwidth())
+        .attr('height', (d) => contentHeight - y(d[yAxisProperty]));
+    }
   }
 }

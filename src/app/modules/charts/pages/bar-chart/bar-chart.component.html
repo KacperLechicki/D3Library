@@ -11,13 +11,13 @@
     const data = ??? <span class="tertiary">//your data</span>
     <br>
     <br>
-    const marginTop = <span class="tertiary">{{constants().margin.top}}</span>
+    const marginTop = <span class="tertiary">{{configuration().margin?.top || 0}}</span>
     <br>
-    const marginRight = <span class="tertiary">{{constants().margin.right}}</span>
+    const marginRight = <span class="tertiary">{{configuration().margin?.right || 0}}</span>
     <br>
-    const marginBottom = <span class="tertiary">{{constants().margin.bottom}}</span>
+    const marginBottom = <span class="tertiary">{{configuration().margin?.bottom || 0}}</span>
     <br>
-    const marginLeft = <span class="tertiary">{{constants().margin.left}}</span>
+    const marginLeft = <span class="tertiary">{{configuration().margin?.left || 0}}</span>
     <br>
     <br>
     const svg = d3

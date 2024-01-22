@@ -1,0 +1,40 @@
+<sh-accordion [count]="1" [labels]="['Data']" [templates]="[data]" [color]="'tertiary'"></sh-accordion>
+
+<ng-template #data>
+  <section class="section">
+    <h3 class="section-label">Data</h3>
+    <div class="data-format">
+      <sh-button [type]="'icon'" [name]="'Format'" (onClick)="changeFormat()">
+        @if (!dataFormatFile()) {
+        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+        } @else {
+        <i class="bi bi-braces"></i>
+        }
+      </sh-button>
+    </div>
+    <form class="section-form" [formGroup]="dataFormGroup">
+      <div class="section-form__control">
+        @if (!dataFormatFile()) {
+        <sh-textarea [dark]="true" [formGroup]="dataFormGroup" [controlName]="'data'" [label]="'Data [JSON]'" />
+        } @else {
+        <sh-button class="format-button" [name]="'Load File'" [type]="'secondary'" />
+        }
+      </div>
+      <div class="section-form-axis">
+        <div class="section-form__control">
+          <sh-input [type]="'text'" [dark]="true" [formGroup]="dataFormGroup" [controlName]="'xAxisProperty'"
+            [label]="'X Axis Property'" />
+        </div>
+        <div class="section-form__control">
+          <sh-input [type]="'text'" [dark]="true" [formGroup]="dataFormGroup" [controlName]="'yAxisProperty'"
+            [label]="'Y Axis Property'" />
+        </div>
+      </div>
+    </form>
+
+    <div class="section__buttons">
+      <sh-button [name]="'Set Default'" [type]="'blank'" [dark]="true" (onClick)="setDefault()" />
+      <sh-button [name]="'Apply'" [type]="'secondary'" (onClick)="submit()" />
+    </div>
+  </section>
+</ng-template>

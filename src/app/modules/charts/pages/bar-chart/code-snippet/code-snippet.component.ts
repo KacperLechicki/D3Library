@@ -1,5 +1,5 @@
 import { Component, Signal, TemplateRef } from '@angular/core';
-import { ChartsStateService } from '../../../store/charts/charts-state.service';
+import { BarChartStateService } from '../../../../../shared/store/charts/bar-chart/bar-chart-state.service';
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class CodeSnippetComponent {
   protected code: Signal<TemplateRef<any>> =
-    this.chartsStateService.select('code');
+    this.barChartStateService.select('code');
 
-  constructor(private chartsStateService: ChartsStateService) {}
+  constructor(private barChartStateService: BarChartStateService) {}
 }
